@@ -1,12 +1,14 @@
 #include "motor.h"
+#include "bluetooth.h"
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   motorInit();
+  bluetoothInit();
 
   Serial.println("Setup ok!");
-  delay(5000);
+  delay(500);
 }
 
 void loop() {
@@ -22,7 +24,7 @@ void loop() {
 
   motorBakcward(250);
 
-  delay(5000);*/
+  delay(5000);
 
   motorTurnRight(250);
 
@@ -30,11 +32,11 @@ void loop() {
 
   motorStop();
 
-  /*delay(5000);
-
-  motorTurnLeft(250);*/
-
   delay(5000);
+
+  motorTurnLeft(250);
+
+  delay(5000);*/
 
 
 }

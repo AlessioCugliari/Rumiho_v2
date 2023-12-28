@@ -11,7 +11,8 @@ void bluetoothInit(){
     }
 
     BLEService service(deviceServiceUuid);
-    BLEStringCharacteristic characteristic(deviceServiceCharacteristicUuid);
+    //BLEStringCharacteristic characteristic(deviceServiceCharacteristicUuid);
+    BLEByteCharacteristic characteristic(deviceServiceCharacteristicUuid, BLERead | BLEWrite);
 
     BLE.setLocalName("Rumiho Rover");
     BLE.setAdvertisedService(service);
@@ -39,5 +40,5 @@ void bluetoothListen(){
 }
 
 void bluetoothReadCommand(){
-    Serial.println("DO THINGS")
+    Serial.println("DO THINGS");
 }

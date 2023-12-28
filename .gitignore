@@ -32,3 +32,4 @@
 *.app
 
 Rumiho\bluetooth_secret.h
+Controller\bluetooth_secret.h

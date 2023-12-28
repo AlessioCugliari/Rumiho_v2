@@ -14,6 +14,8 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+  bluetoothListen();
+
   /*motorForward(250);
   
   delay(5000);

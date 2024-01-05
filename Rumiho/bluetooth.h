@@ -5,7 +5,7 @@
 
 void bluetoothInit(BLEService service, BLEByteCharacteristic switchCharacteristic);
 
-void bluetoothListen();
+void bluetoothListen(BLEByteCharacteristic switchCharacteristic);
 
 void bluetoothReadCommand();
 

@@ -29,20 +29,33 @@ void bluetoothInit(BLEService service, BLEByteCharacteristic switchCharacteristi
 
 }
 
-void bluetoothListen(){
+void bluetoothListen(BLEByteCharacteristic switchCharacteristic){
 
+    // listen for Bluetooth® Low Energy peripherals to connect:
     BLEDevice central = BLE.central();
-    delay(500);
 
-    if(central){
-        Serial.println("* Connected to central device!");
-        Serial.print("* Device MAC address: ");
+    // if a central is connected to peripheral:
+    if (central) {
+        Serial.print("Connected to central: ");
+        // print the central's MAC address:
         Serial.println(central.address());
-        Serial.println(" ");
-        
-        while(central.connected()){
-            bluetoothReadCommand();
+
+        // while the central is still connected to peripheral:
+        while (central.connected()) {
+          // if the remote device wrote to the characteristic,
+          // use the value to control the LED:
+          if (switchCharacteristic.written()) {
+              if (switchCharacteristic.value()) {   // any value other than 0
+                  Serial.println("LED on");
+              } else {                              // a 0 value
+                  Serial.println(F("LED off"));
+              }
+            }
         }
+
+      // when the central disconnects, print it out:
+      Serial.print(F("Disconnected from central: "));
+      Serial.println(central.address());
     }
 }
 

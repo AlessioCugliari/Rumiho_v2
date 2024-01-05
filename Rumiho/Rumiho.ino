@@ -9,33 +9,12 @@ BLEByteCharacteristic switchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  motorInit();
-  //bluetoothInit();
-
-  // begin initialization
-  if (!BLE.begin()) {
-    Serial.println("starting Bluetooth® Low Energy module failed!");
-    while (1);
-  }
-
-  // set advertised local name and service UUID:
-  BLE.setLocalName("Rumiho Rover");
-  BLE.setAdvertisedService(service);
-
-  // add the characteristic to the service
-  service.addCharacteristic(switchCharacteristic);
-
-  // add service
-  BLE.addService(service);
   
-  // set the initial value for the characeristic:
-  switchCharacteristic.writeValue(0);
+  motorInit();
+  bluetoothInit(service, switchCharacteristic);
 
-  // start advertising
-  BLE.advertise();
-
+  delay(500);   //Some time to put the rover on the ground
   Serial.println("Setup ok!");
-  delay(500);
 }
 
 void loop() {

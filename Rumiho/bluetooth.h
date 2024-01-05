@@ -3,7 +3,7 @@
 
 #include <ArduinoBLE.h>
 
-void bluetoothInit();
+void bluetoothInit(BLEService service, BLEByteCharacteristic switchCharacteristic);
 
 void bluetoothListen();
 

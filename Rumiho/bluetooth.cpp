@@ -3,25 +3,29 @@
 
 //PERIPHERAL
 
-void bluetoothInit(){
+void bluetoothInit(BLEService service, BLEByteCharacteristic switchCharacteristic){
 
-    const char* deviceServiceUuid = SERVICE_UUID;
-    const char* deviceServiceCharacteristicUuid = SERVICE_CHARACTERISTIC_UUID;
-
-    if(!BLE.begin()){
-        while(1);
+    // begin initialization
+    if (!BLE.begin()) {
+      Serial.println("starting Bluetooth® Low Energy module failed!");
+      while (1);
     }
 
-    /*BLEService service(deviceServiceUuid);
-    //BLEStringCharacteristic characteristic(deviceServiceCharacteristicUuid);
-    BLEByteCharacteristic characteristic(deviceServiceCharacteristicUuid, BLERead | BLEWrite);*/
-
-    /*BLE.setLocalName("Rumiho Rover");
+    // set advertised local name and service UUID:
+    BLE.setLocalName("Rumiho Rover");
     BLE.setAdvertisedService(service);
-    service.addCharacteristic(characteristic);
-    characteristic.writeValue(-1);
+
+    // add the characteristic to the service
+    service.addCharacteristic(switchCharacteristic);
+
+    // add service
     BLE.addService(service);
-    BLE.advertise();*/
+  
+    // set the initial value for the characeristic:
+    switchCharacteristic.writeValue(0);
+
+    // start advertising
+    BLE.advertise();
 
 }
 

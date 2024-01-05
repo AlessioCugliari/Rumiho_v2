@@ -1,6 +1,8 @@
 #include "bluetooth.h"
 #include "bluetooth_secret.h"
 
+//PERIPHERAL
+
 void bluetoothInit(){
 
     const char* deviceServiceUuid = SERVICE_UUID;
@@ -10,15 +12,16 @@ void bluetoothInit(){
         while(1);
     }
 
-    BLEService service(deviceServiceUuid);
+    /*BLEService service(deviceServiceUuid);
     //BLEStringCharacteristic characteristic(deviceServiceCharacteristicUuid);
-    BLEByteCharacteristic characteristic(deviceServiceCharacteristicUuid, BLERead | BLEWrite);
+    BLEByteCharacteristic characteristic(deviceServiceCharacteristicUuid, BLERead | BLEWrite);*/
 
-    BLE.setLocalName("Rumiho Rover");
+    /*BLE.setLocalName("Rumiho Rover");
     BLE.setAdvertisedService(service);
     service.addCharacteristic(characteristic);
+    characteristic.writeValue(-1);
     BLE.addService(service);
-    BLE.advertise();
+    BLE.advertise();*/
 
 }
 

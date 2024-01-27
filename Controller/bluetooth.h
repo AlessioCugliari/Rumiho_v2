@@ -6,8 +6,8 @@
 
 void bluetoothInit();
 
-void connectToPeripheral();
+void connectToPeripheral_aux();
 
-void controlPeripheral(BLEDevice peripheral);
+void controlPeripheral2(BLEDevice peripheral);
 
 #endif // _BLUETOOTH_H

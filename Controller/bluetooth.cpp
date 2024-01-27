@@ -1,21 +1,30 @@
 #include "bluetooth.h"
 #include "bluetooth_secret.h"
 
-const char* deviceServiceUuid = SERVICE_UUID;
-const char* deviceServiceCharacteristicUuid = SERVICE_CHARACTERISTIC_UUID;
+//Central device
+
+/*const char* deviceServiceUuid = SERVICE_UUID;
+const char* deviceServiceCharacteristicUuid = SERVICE_CHARACTERISTIC_UUID;*/
 
 void bluetoothInit(){
 
-    BLE.setLocalName("Rumiho Controller");
-    BLE.advertise();
-    Serial.println(deviceServiceUuid);
-}
+  if (!BLE.begin()) {
+      Serial.println("* Starting Bluetooth® Low Energy module failed!");
+      while (1);
+  }
 
-void connectToPeripheral(){
+  BLE.setLocalName("Rumiho Controller"); 
+  BLE.scan();
+
+}
+/*
+void connectToPeripheral_aux(){
 
     BLEDevice peripheral;
 
     Serial.println("- Discovering peripheral device...");
+
+    const char* deviceServiceUuid = "19b10000-e8f2-537e-4f6c-d104768a1214";
 
     do{
         BLE.scanForUuid(deviceServiceUuid);
@@ -37,6 +46,6 @@ void connectToPeripheral(){
 
         controlPeripheral(peripheral);
     }
-}
+}*/
 
-void controlPeripheral(BLEDevice peripheral){}
+void controlPeripheral2(BLEDevice peripheral){}

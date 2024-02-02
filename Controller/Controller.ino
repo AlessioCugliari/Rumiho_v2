@@ -7,6 +7,9 @@ const char* deviceServiceCharacteristicUuid = "19b10001-e8f2-537e-4f6c-d104768a1
 float Ax,Ay,Az;
 float Gx,Gy,Gz;
 
+float currentX = 0;
+float currentY = 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -21,7 +24,8 @@ void loop() {
   // put your main code here, to run repeatedly:
   //connectToPeripheral();
   
-  readGyro(Gx,Gy,Gz);
+  //readGyro(Gx,Gy,Gz,&currentX,&currentY);
+  readAcc(Ax,Ay,Az);
   
   /*BLEDevice peripheral = BLE.available();
 

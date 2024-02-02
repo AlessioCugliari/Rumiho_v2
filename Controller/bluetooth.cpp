@@ -56,16 +56,16 @@ void sendMessage(){
 
   readAcc(&Ax,&Ay,&Az);
 
-  if(Ay > 0.30){
+  if(Ay > THRESHOLD){
     Serial.println("W");
   }
-  else if(Ay < -0.30){
+  else if(Ay < -THRESHOLD){
     Serial.println("S");
   }
-  else if(Ax > 0.30){
+  else if(Ax > THRESHOLD){
     Serial.println("D");
   }
-  else if(Ax < -0.30){
+  else if(Ax < -THRESHOLD){
     Serial.println("A");
   }
   else{

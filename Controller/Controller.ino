@@ -4,7 +4,6 @@
 const char* deviceServiceUuid = "19b10000-e8f2-537e-4f6c-d104768a1214";
 const char* deviceServiceCharacteristicUuid = "19b10001-e8f2-537e-4f6c-d104768a1214";
 
-float Ax,Ay,Az;
 float Gx,Gy,Gz;
 
 float currentX = 0;
@@ -25,7 +24,7 @@ void loop() {
   //connectToPeripheral();
   
   //readGyro(Gx,Gy,Gz,&currentX,&currentY);
-  readAcc(Ax,Ay,Az);
+  sendMessage();
   
   /*BLEDevice peripheral = BLE.available();
 

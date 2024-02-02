@@ -49,3 +49,26 @@ void connectToPeripheral_aux(){
 }*/
 
 void controlPeripheral2(BLEDevice peripheral){}
+
+void sendMessage(){
+
+  float Ax,Ay,Az;
+
+  readAcc(&Ax,&Ay,&Az);
+
+  if(Ay > 0.30){
+    Serial.println("W");
+  }
+  else if(Ay < -0.30){
+    Serial.println("S");
+  }
+  else if(Ax > 0.30){
+    Serial.println("D");
+  }
+  else if(Ax < -0.30){
+    Serial.println("A");
+  }
+  else{
+    Serial.println("Q");
+  }
+}

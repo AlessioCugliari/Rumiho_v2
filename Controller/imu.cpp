@@ -60,19 +60,19 @@ void readGyro(float Gx, float Gy, float Gz, float *currentX, float *currentY){
   }
 }
 
-void readAcc(float Ax, float Ay, float Az){
+void readAcc(float* Ax, float* Ay, float* Az){
 
   if(IMU.accelerationAvailable()){
 
-    IMU.readAcceleration(Ax, Ay, Az);
+    IMU.readAcceleration(*Ax, *Ay, *Az);
 
-    Serial.println("Acc data: ");
+    /*Serial.println("Acc data: ");
     Serial.print("Ax: ");
     Serial.print(Ax);
     Serial.print('\t');
     Serial.print(" Ay: ");
     Serial.print(Ay);
-    Serial.println();
+    Serial.println();*/
 
     delay(50);
 

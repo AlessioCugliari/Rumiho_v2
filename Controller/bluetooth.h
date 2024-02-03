@@ -11,6 +11,6 @@ void connectToPeripheral_aux();
 
 void controlPeripheral2(BLEDevice peripheral);
 
-void sendMessage();
+char createCommand();
 
 #endif // _BLUETOOTH_H

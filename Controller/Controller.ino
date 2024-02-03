@@ -23,10 +23,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   //connectToPeripheral();
   
-  //readGyro(Gx,Gy,Gz,&currentX,&currentY);
-  sendMessage();
-  
-  /*BLEDevice peripheral = BLE.available();
+  BLEDevice peripheral = BLE.available();
 
   if (peripheral) {
     // discovered a peripheral, print out address, local name, and advertised service
@@ -48,9 +45,10 @@ void loop() {
       // peripheral disconnected, we are done
       while (1) {
         // do nothing
+        //sendMessage();
       }
     }
-  }*/
+  }
 }
 
 void explorerPeripheral(BLEDevice peripheral) {
@@ -83,12 +81,28 @@ void explorerPeripheral(BLEDevice peripheral) {
   Serial.println();
 
   // loop the services of the peripheral and explore each
-  for (int i = 0; i < peripheral.serviceCount(); i++) {
+  /*for (int i = 0; i < peripheral.serviceCount(); i++) {
     BLEService service = peripheral.service(i);
 
     exploreService(service);
+  }*/
+
+  BLECharacteristic commandCharacteristic = peripheral.characteristic(deviceServiceCharacteristicUuid);
+
+  if(!commandCharacteristic){
+    Serial.println("* Peripheral device does not have characteristic");
+    peripheral.disconnect();
+    return;
+  }else if(!commandCharacteristic.canWrite()){
+    Serial.println("* Peripheral device does not have a writable characteristic");
+    peripheral.disconnect();
+    return;
   }
 
+  while(peripheral.connected()){
+    char command = createCommand();
+    commandCharacteristic.writeValue((byte)command);
+  }
   Serial.println();
 
   // we are done exploring, disconnect

@@ -50,25 +50,30 @@ void connectToPeripheral_aux(){
 
 void controlPeripheral2(BLEDevice peripheral){}
 
-void sendMessage(){
+char createCommand(){
 
   float Ax,Ay,Az;
 
   readAcc(&Ax,&Ay,&Az);
 
   if(Ay > THRESHOLD){
-    Serial.println("W");
+    //Serial.println("W");
+    return 'W';
   }
   else if(Ay < -THRESHOLD){
-    Serial.println("S");
+    //Serial.println("S");
+    return 'S';
   }
   else if(Ax > THRESHOLD){
-    Serial.println("D");
+    //Serial.println("D");
+    return 'D';
   }
   else if(Ax < -THRESHOLD){
-    Serial.println("A");
+    //Serial.println("A");
+    return 'A';
   }
   else{
-    Serial.println("Q");
+    //Serial.println("Q");
+    return 'Q';
   }
 }

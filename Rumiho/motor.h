@@ -13,6 +13,8 @@
 #define RIGHT_PIN_BRAKE 8
 #define RIGHT_PIN_CURRENT_SENSING A1
 
+#define BASE_SPEED 250
+
 void motorInit();
 
 void motorForward(int8_t value);

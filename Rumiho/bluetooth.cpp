@@ -1,5 +1,6 @@
 #include "bluetooth.h"
 #include "bluetooth_secret.h"
+#include "motor.h"
 
 //PERIPHERAL
 
@@ -45,11 +46,12 @@ void bluetoothListen(BLEByteCharacteristic switchCharacteristic){
           // if the remote device wrote to the characteristic,
           // use the value to control the LED:
           if (switchCharacteristic.written()) {
-              if (switchCharacteristic.value()) {   // any value other than 0
+              /*if (switchCharacteristic.value()) {   // any value other than 0
                   Serial.println("LED on");
               } else {                              // a 0 value
                   Serial.println(F("LED off"));
-              }
+              }*/
+              bluetoothReadCommand(switchCharacteristic.value());
             }
         }
 
@@ -59,6 +61,28 @@ void bluetoothListen(BLEByteCharacteristic switchCharacteristic){
     }
 }
 
-void bluetoothReadCommand(){
-    Serial.println("DO THINGS");
+void bluetoothReadCommand(char cmd){
+  
+    switch(cmd){
+      case 'W':
+        Serial.println("I received W");
+        motorForward(BASE_SPEED);
+        break;
+      case 'S':
+        Serial.println("I received S");
+        motorBakcward(BASE_SPEED);
+        break;
+      case 'D':
+        Serial.println("I received D");
+        motorTurnRight(BASE_SPEED);
+        break;
+      case 'A':
+        Serial.println("I received A");
+        motorTurnLeft(BASE_SPEED);
+        break;
+      default:
+        Serial.println("Default case Q");
+        motorStop();
+        break;
+    }
 }

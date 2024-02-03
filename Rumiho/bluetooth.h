@@ -7,6 +7,6 @@ void bluetoothInit(BLEService service, BLEByteCharacteristic switchCharacteristi
 
 void bluetoothListen(BLEByteCharacteristic switchCharacteristic);
 
-void bluetoothReadCommand();
+void bluetoothReadCommand(char cmd);
 
 #endif // BLUETOOTH_H

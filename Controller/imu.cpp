@@ -66,14 +66,6 @@ void readAcc(float* Ax, float* Ay, float* Az){
 
     IMU.readAcceleration(*Ax, *Ay, *Az);
 
-    /*Serial.println("Acc data: ");
-    Serial.print("Ax: ");
-    Serial.print(Ax);
-    Serial.print('\t');
-    Serial.print(" Ay: ");
-    Serial.print(Ay);
-    Serial.println();*/
-
     delay(50);
 
   }

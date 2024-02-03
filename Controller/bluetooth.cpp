@@ -60,20 +60,19 @@ char createCommand(){
     Serial.println("W");
     return 'W';
   }
-  else if(Ay < -THRESHOLD){
+  if(Ay < -THRESHOLD){
     Serial.println("S");
     return 'S';
   }
-  else if(Ax > THRESHOLD){
+  if(Ax > THRESHOLD){
     Serial.println("D");
     return 'D';
   }
-  else if(Ax < -THRESHOLD){
+  if(Ax < -THRESHOLD){
     Serial.println("A");
     return 'A';
   }
-  else{
-    Serial.println("Q");
-    return 'Q';
-  }
+  
+  Serial.println("Q");
+  return 'Q';
 }

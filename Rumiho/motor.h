@@ -33,4 +33,8 @@ void motorSetPwmLeft(int8_t value);
 
 void motorSetPwmRight(int8_t value);
 
+void motorForwardPWM(int8_t rightMotorValue, int8_t leftMotorValue);
+
+void motorBackwardOWM(int8_t rightMotorValue, int8_t leftMotorValue);
+
 #endif // MOTOR_H

@@ -68,3 +68,21 @@ void motorSetPwmLeft(int8_t value){
 void motorSetPwmRight(int8_t value){
     analogWrite(RIGHT_PIN_PWM, value);
 }
+
+void motorForwardPWM(int8_t rightMotorValue, int8_t leftMotorValue){
+    
+    motorSetPwmRight(rightMotorValue);
+    motorSetPwmLeft(leftMotorValue);
+
+    digitalWrite(LEFT_PIN_DIRECTION, LOW);
+    digitalWrite(RIGHT_PIN_DIRECTION, HIGH);
+}
+
+void motorBackwardPWM(int8_t rightMotorValue, int8_t leftMotorValue){
+
+    motorSetPwmRight(rightMotorValue);
+    motorSetPwmLeft(leftMotorValue);
+
+    digitalWrite(LEFT_PIN_DIRECTION, HIGH);
+    digitalWrite(RIGHT_PIN_DIRECTION, LOW);
+}
